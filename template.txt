@@ -1,0 +1,5 @@
+data["v_a"].append(appenda)
+data["v_a"].append(appenda)
+data["v_a"].append(appenda)
+append21 = {'sentence':'aaa','timestamp':[aaa,aaa]}
+data["v_aa"].append(append21)
