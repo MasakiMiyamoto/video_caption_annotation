@@ -6,6 +6,8 @@ root = tk.Tk()
 root.title("Naklab annotation")
 root.geometry("400x400")
 
+iconfile = './icon.ico'
+root.iconbitmap(default=iconfile)
 
 
 # 日付のラベルとエントリーの設定
@@ -39,6 +41,14 @@ label5 = tk.Label(frame4,font=("",14),text="アペンド数")
 label5.pack(side="left")
 entry4 = tk.Entry(frame4,font=("",14),justify="center",width=15)
 entry4.pack(side="left")
+
+# 金額のラベルとエントリーの設定
+frame5 = tk.Frame(root,pady=10)
+frame5.pack()
+label6 = tk.Label(frame5,font=("",14),text="動画ID")
+label6.pack(side="left")
+entry5 = tk.Entry(frame5,font=("",14),justify="center",width=15)
+entry5.pack(side="left")
 # clickイベント
 
 def btn_click1():
@@ -53,12 +63,23 @@ def btn_click1():
     f.write('append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}\n'%(nm,st,ts,te)) # 文字列を記載する
     f.close()
 
+def btn_click2():
+
+
+    # テキスト取得
+    id=entry5.get()
+    nm=entry4.get()
+    f = open('template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
+    f.write('data[\"v_%s\"].append(append%s)\n'%(id,nm)) # 文字列を記載する
+    f.close()
+
 
 
 # 作成の設定
 button4 = tk.Button(root,text="テンプレ作成",font=("",16),width=12,bg="white",command=btn_click1)
 button4.pack()
-
+button5 = tk.Button(root,text="動画ID作成",font=("",16),width=12,bg="white",command=btn_click2)
+button5.pack()
 
 
 root.mainloop()
