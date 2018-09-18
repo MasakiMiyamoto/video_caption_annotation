@@ -1,0 +1,32 @@
+{
+    "v_OTqq4kn4deM": [
+        {
+            "sentence": "a",
+            "timestamp": [
+                3.43,
+                6.76
+            ]
+        },
+        {
+            "sentence": "b",
+            "timestamp": [
+                22.5,
+                25.83
+            ]
+        },
+        {
+            "sentence": "c",
+            "timestamp": [
+                33.93,
+                37.26
+            ]
+        },
+        {
+            "sentence": "d",
+            "timestamp": [
+                48.67,
+                52.0
+            ]
+        }
+    ]
+}
