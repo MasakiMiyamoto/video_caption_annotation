@@ -4,7 +4,7 @@ import tkinter as tk
 # rootフレームの設定
 root = tk.Tk()
 root.title("Naklab annotation")
-root.geometry("400x400")
+root.geometry("800x400")
 
 iconfile = './data/icon.ico'
 root.iconbitmap(default=iconfile)
@@ -15,7 +15,7 @@ frame1 = tk.Frame(root,pady=10)
 frame1.pack()
 label2 = tk.Label(frame1,font=("",14),text="センテンス")
 label2.pack(side="left")
-entry1 = tk.Entry(frame1,font=("",14),justify="right",width=15)
+entry1 = tk.Entry(frame1,font=("",14),justify="right",width=70)
 entry1.pack(side="left")
 
 # 開始タイムスタンプのラベルとエントリーの設定
