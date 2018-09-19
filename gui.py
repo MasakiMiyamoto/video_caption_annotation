@@ -59,7 +59,7 @@ def btn_click1():
     ts=entry2.get()
     te=entry3.get()
     nm=entry4.get()
-    f = open('template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
+    f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
     f.write('append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}\n'%(nm,st,ts,te)) # 文字列を記載する
     f.close()
 
@@ -69,7 +69,7 @@ def btn_click2():
     # テキスト取得
     id=entry5.get()
     nm=entry4.get()
-    f = open('template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
+    f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
     f.write('data[\"v_%s\"].append(append%s)\n'%(id,nm)) # 文字列を記載する
     f.close()
 
