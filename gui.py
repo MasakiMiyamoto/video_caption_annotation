@@ -1,6 +1,15 @@
 # -*- coding:utf-8 -*-
+import sys
+sys.getrecursionlimit()
 import tkinter as tk
-
+import random
+import tkinter.messagebox as tkmsg
+'''
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+import cv2
+'''
 # rootフレームの設定
 root = tk.Tk()
 root.title("Naklab annotation")
@@ -82,7 +91,15 @@ def btn_click1():
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
     f.write('append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}\n'%(nm,st,ts,te)) # 文字列を記載する
     f.close()
+    rm=random.randrange(1, 101)
+    if rm==1 or rm==11 or rm==21 or rm==31 or rm==41 or rm==51:
 
+
+        b=tkmsg.showinfo('うんち！','ちんちん！')
+        '''
+        img = cv2.imread("./data/hasu.jpg")
+        cv2.imshow('ero gazou', img)
+        '''
 def btn_click2():
 
 
