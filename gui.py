@@ -61,6 +61,10 @@ label6 = tk.Label(frame5,font=("",14),text="動画ID")
 label6.pack(side="left")
 entry5 = tk.Entry(frame5,font=("",14),justify="center",width=15)
 entry5.pack(side="left")
+frame6 = tk.Frame(root,pady=10)
+frame6.pack()
+label7 = tk.Label(frame6,font=("",14),text="*タイムスタンプは全部のエントリーを記入しないと出力されない")
+label7.pack(side="left")
 # clickイベント
 
 def btn_click1():
@@ -106,6 +110,5 @@ button5 = tk.Button(root,text="動画ID作成",font=("",16),width=12,bg="white",
 button5.pack()
 button6 = tk.Button(root,text="最初のやつ",font=("",16),width=12,bg="white",command=btn_click3)
 button6.pack()
-
 
 root.mainloop()
