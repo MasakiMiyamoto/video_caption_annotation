@@ -23,16 +23,28 @@ frame2 = tk.Frame(root,pady=10)
 frame2.pack()
 label3 = tk.Label(frame2,font=("",14),text="開始タイムスタンプ")
 label3.pack(side="left")
-entry2 = tk.Entry(frame2,font=("",14),justify="center",width=15)
+entry2 = tk.Entry(frame2,font=("",14),justify="center",width=7)
 entry2.pack(side="left")
+label6 = tk.Label(frame2,font=("",14),text="分")
+label6.pack(side="left")
+entry6 = tk.Entry(frame2,font=("",14),justify="center",width=7)
+entry6.pack(side="left")
+label7 = tk.Label(frame2,font=("",14),text="秒")
+label7.pack(side="left")
 
 # 終了タイムスタンプのラベルとエントリーの設定
 frame3 = tk.Frame(root,pady=10)
 frame3.pack()
 label4 = tk.Label(frame3,font=("",14),text="終了タイムスタンプ")
 label4.pack(side="left")
-entry3 = tk.Entry(frame3,font=("",14),justify="center",width=15)
+entry3 = tk.Entry(frame3,font=("",14),justify="center",width=7)
 entry3.pack(side="left")
+label8 = tk.Label(frame3,font=("",14),text="分")
+label8.pack(side="left")
+entry7 = tk.Entry(frame3,font=("",14),justify="center",width=7)
+entry7.pack(side="left")
+label9 = tk.Label(frame3,font=("",14),text="秒")
+label9.pack(side="left")
 
 # アペンド数のラベルとエントリーの設定
 frame4 = tk.Frame(root,pady=10)
@@ -56,9 +68,13 @@ def btn_click1():
 
     # テキスト取得
     st=entry1.get()
-    ts=entry2.get()
-    te=entry3.get()
+    tsm=entry2.get()
+    tss=entry6.get()
+    tem=entry3.get()
+    tes=entry7.get()
     nm=entry4.get()
+    ts=int(tsm)*60+float(tss)
+    te=int(tem)*60+float(tes)
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
     f.write('append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}\n'%(nm,st,ts,te)) # 文字列を記載する
     f.close()
@@ -73,6 +89,14 @@ def btn_click2():
     f.write('data[\"v_%s\"].append(append%s)\n'%(id,nm)) # 文字列を記載する
     f.close()
 
+def btn_click3():
+
+
+    # テキスト取得
+    id=entry5.get()
+    f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
+    f.write('data[\"v_%s\"] = []\n'%(id)) # 文字列を記載する
+    f.close()
 
 
 # ボタンの設定
@@ -80,6 +104,8 @@ button4 = tk.Button(root,text="テンプレ作成",font=("",16),width=12,bg="whi
 button4.pack()
 button5 = tk.Button(root,text="動画ID作成",font=("",16),width=12,bg="white",command=btn_click2)
 button5.pack()
+button6 = tk.Button(root,text="最初のやつ",font=("",16),width=12,bg="white",command=btn_click3)
+button6.pack()
 
 
 root.mainloop()
