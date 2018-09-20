@@ -89,7 +89,7 @@ def btn_click1():
     ts=int(tsm)*60+float(tss)
     te=int(tem)*60+float(tes)
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
-    f.write('append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}\n'%(nm,st,ts,te)) # 文字列を記載する
+    f.write('append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}\n'%(nm,st,'%02.2f' % ts,'%02.2f' % te)) # 文字列を記載する
     f.close()
     rm=random.randrange(1, 101)
     if rm==1 or rm==11 or rm==21 or rm==31 or rm==41 or rm==51:
