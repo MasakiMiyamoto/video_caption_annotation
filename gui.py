@@ -13,7 +13,7 @@ import cv2
 # rootフレームの設定
 root = tk.Tk()
 root.title("Naklab annotation")
-root.geometry("800x400")
+root.geometry("800x450")
 
 iconfile = './data/icon.ico'
 root.iconbitmap(default=iconfile)
@@ -76,6 +76,8 @@ label7 = tk.Label(frame6,font=("",14),text="*タイムスタンプは全部の�
 label7.pack(side="left")
 # clickイベント
 
+
+
 def btn_click1():
 
 
@@ -101,15 +103,22 @@ def btn_click1():
         cv2.imshow('ero gazou', img)
         '''
 def btn_click2():
-
-
+    '''
+    with open('./data/kazu.txt','r',encoding='utf-8') as f:
+        kazu=f.read()
+        nmr=int(kazu)
+    '''
     # テキスト取得
     id=entry5.get()
     nm=entry4.get()
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
     f.write('data[\"v_%s\"].append(append%s)\n'%(id,nm)) # 文字列を記載する
     f.close()
-
+    '''
+    nmr+=1
+    w = open('./data/kazu.txt', 'w')
+    w.write('%d',nmr)
+    '''
 def btn_click3():
 
 
@@ -119,13 +128,54 @@ def btn_click3():
     f.write('data[\"v_%s\"] = []\n'%(id)) # 文字列を記載する
     f.close()
 
+def kesu():
+    entry1.delete(0,100)
+    entry2.delete(0,100)
+    entry3.delete(0,100)
+    entry7.delete(0,100)
+    entry6.delete(0,100)
 
+def btn_click4():
+    entry1.insert(tk.END,"画面のと画面のが衝突します")
 # ボタンの設定
-button4 = tk.Button(root,text="テンプレ作成",font=("",16),width=12,bg="white",command=btn_click1)
-button4.pack()
-button5 = tk.Button(root,text="動画ID作成",font=("",16),width=12,bg="white",command=btn_click2)
-button5.pack()
-button6 = tk.Button(root,text="最初のやつ",font=("",16),width=12,bg="white",command=btn_click3)
-button6.pack()
+def btn_click5():
+    entry1.insert(tk.END,"画面のが危険")
 
+
+frame7 = tk.Frame(root,pady=10)
+frame7.pack()
+
+button4 = tk.Button(frame7,text="テンプレ作成",font=("",16),width=12,bg="white",command=btn_click1)
+button4.pack(side="left")
+button7 = tk.Button(frame7,text="若宮のわがまま",font=("",16),width=12,bg="white",command=kesu)
+button7.pack(side="left")
+frame8 = tk.Frame(root,pady=10)
+frame8.pack()
+button5 = tk.Button(frame8,text="動画ID作成",font=("",16),width=12,bg="white",command=btn_click2)
+button5.pack(side="left")
+
+button8 = tk.Button(frame8,text="楽々ボタン1",font=("",16),width=12,bg="white",command=btn_click4)
+button8.pack(side="left")
+button9 = tk.Button(frame8,text="楽々ボタン2",font=("",16),width=12,bg="white",command=btn_click5)
+button9.pack(side="left")
+
+'''
+with open('./data/kazu.txt','r',encoding='utf-8') as f:
+    kazu=f.read()
+'''
+frame9 = tk.Frame(root,pady=10)
+frame9.pack()
+button6 = tk.Button(frame9,text="最初のやつ",font=("",16),width=12,bg="white",command=btn_click3)
+button6.pack(side="left")
+'''
+entry8= tk.Entry(frame9,font=("",14),justify="center",width=5)
+entry8.pack(side="left")
+
+label9 = tk.Label(frame9,font=("",14),text="回")
+label9.pack(side="left")
+entry8.insert(tk.END,kazu)
+'''
+'''
+root.bind( '<Key-Delete>', kesu)
+'''
 root.mainloop()
