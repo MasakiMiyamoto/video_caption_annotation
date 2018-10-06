@@ -13,7 +13,7 @@ import cv2
 # rootフレームの設定
 root = tk.Tk()
 root.title("Naklab annotation")
-root.geometry("800x450")
+root.geometry("800x600")
 
 iconfile = './data/icon.ico'
 root.iconbitmap(default=iconfile)
@@ -80,7 +80,7 @@ label7.pack(side="left")
 
 def btn_click1():
 
-
+    entry8.delete(0,100)
     # テキスト取得
     st=entry1.get()
     tsm=entry2.get()
@@ -88,11 +88,19 @@ def btn_click1():
     tem=entry3.get()
     tes=entry7.get()
     nm=entry4.get()
-    ts=int(tsm)*60+float(tss)
-    te=int(tem)*60+float(tes)
+    if tsm=='':
+        ts=float(tss)
+    if tsm!='':
+        ts=int(tsm)*60+float(tss)
+    if tem=='':
+        te=float(tes)
+    if tem!='':
+        te=int(tem)*60+float(tes)
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
-    f.write('append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}\n'%(nm,st,'%02.2f' % ts,'%02.2f' % te)) # 文字列を記載する
+    bun1='append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}'%(nm,st,'%02.2f' % ts,'%02.2f' % te)
+    f.write(bun1+'\n') # 文字列を記載する
     f.close()
+    entry8.insert(tk.END,bun1)
     rm=random.randrange(1, 101)
     if rm==1 or rm==11 or rm==21 or rm==31 or rm==41 or rm==51:
 
@@ -103,6 +111,7 @@ def btn_click1():
         cv2.imshow('ero gazou', img)
         '''
 def btn_click2():
+    entry8.delete(0,100)
     '''
     with open('./data/kazu.txt','r',encoding='utf-8') as f:
         kazu=f.read()
@@ -112,8 +121,10 @@ def btn_click2():
     id=entry5.get()
     nm=entry4.get()
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
-    f.write('data[\"v_%s\"].append(append%s)\n'%(id,nm)) # 文字列を記載する
+    bun2='data[\"v_%s\"].append(append%s)'%(id,nm)
+    f.write(bun2+'\n') # 文字列を記載する
     f.close()
+    entry8.insert(tk.END,bun2)
     '''
     nmr+=1
     w = open('./data/kazu.txt', 'w')
@@ -121,12 +132,15 @@ def btn_click2():
     '''
 def btn_click3():
 
+    entry8.delete(0,100)
 
     # テキスト取得
     id=entry5.get()
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
-    f.write('data[\"v_%s\"] = []\n'%(id)) # 文字列を記載する
+    bun3='data[\"v_%s\"] = []'%(id)
+    f.write(bun3+'\n') # 文字列を記載する
     f.close()
+    entry8.insert(tk.END,bun3)
 
 def kesu():
     entry1.delete(0,100)
@@ -134,6 +148,7 @@ def kesu():
     entry3.delete(0,100)
     entry7.delete(0,100)
     entry6.delete(0,100)
+    #entry8.delete(0,100)
 
 def btn_click4():
     entry1.insert(tk.END,"画面のと画面のが衝突します")
@@ -142,14 +157,14 @@ def btn_click5():
     entry1.insert(tk.END,"画面のが危険")
 
 
-frame7 = tk.Frame(root,pady=10)
+frame7 = tk.Frame(root,pady=0)
 frame7.pack()
 
 button4 = tk.Button(frame7,text="テンプレ作成",font=("",16),width=12,bg="white",command=btn_click1)
 button4.pack(side="left")
 button7 = tk.Button(frame7,text="若宮のわがまま",font=("",16),width=12,bg="white",command=kesu)
 button7.pack(side="left")
-frame8 = tk.Frame(root,pady=10)
+frame8 = tk.Frame(root,pady=0)
 frame8.pack()
 button5 = tk.Button(frame8,text="動画ID作成",font=("",16),width=12,bg="white",command=btn_click2)
 button5.pack(side="left")
@@ -163,7 +178,7 @@ button9.pack(side="left")
 with open('./data/kazu.txt','r',encoding='utf-8') as f:
     kazu=f.read()
 '''
-frame9 = tk.Frame(root,pady=10)
+frame9 = tk.Frame(root,pady=0)
 frame9.pack()
 button6 = tk.Button(frame9,text="最初のやつ",font=("",16),width=12,bg="white",command=btn_click3)
 button6.pack(side="left")
@@ -178,4 +193,18 @@ entry8.insert(tk.END,kazu)
 '''
 root.bind( '<Key-Delete>', kesu)
 '''
+frame10 = tk.Frame(root,pady=10)
+frame10.pack()
+frame11 = tk.Frame(root,pady=10)
+frame11.pack()
+frame12 = tk.Frame(root,pady=10)
+frame12.pack()
+label8 = tk.Label(frame12,font=("",14),text="v0.51")
+label8.pack(side="left")
+
+label8 = tk.Label(frame10,font=("",14),text="出力結果")
+label8.pack(side="left")
+
+entry8 = tk.Entry(frame11,font=("",14),justify="right",width=60)
+entry8.pack(side="left")
 root.mainloop()
