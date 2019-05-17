@@ -159,7 +159,7 @@ def btn_click5():
 
 frame7 = tk.Frame(root,pady=0)
 frame7.pack()
-
+#ボタン作成
 button4 = tk.Button(frame7,text="テンプレ作成",font=("",16),width=12,bg="white",command=btn_click1)
 button4.pack(side="left")
 button7 = tk.Button(frame7,text="若宮のわがまま",font=("",16),width=12,bg="white",command=kesu)
