@@ -178,6 +178,7 @@ button9.pack(side="left")
 with open('./data/kazu.txt','r',encoding='utf-8') as f:
     kazu=f.read()
 '''
+＃文字添加
 frame9 = tk.Frame(root,pady=0)
 frame9.pack()
 button6 = tk.Button(frame9,text="最初のやつ",font=("",16),width=12,bg="white",command=btn_click3)
