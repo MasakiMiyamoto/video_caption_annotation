@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
 import sys
 sys.getrecursionlimit()
-import tkinter as tk
 import random
+
+import tkinter as tk
 import tkinter.messagebox as tkmsg
 '''
 import numpy as np
@@ -12,7 +13,7 @@ import cv2
 '''
 # rootフレームの設定
 root = tk.Tk()
-root.title("Naklab annotation")
+root.title("Annotation outputter")
 root.geometry("800x600")
 
 iconfile = './data/icon.ico'
@@ -74,10 +75,10 @@ frame6 = tk.Frame(root,pady=10)
 frame6.pack()
 label7 = tk.Label(frame6,font=("",14),text="*タイムスタンプは全部のエントリーを記入しないと出力されない")
 label7.pack(side="left")
+
+
+
 # clickイベント
-
-
-
 def btn_click1():
 
     entry8.delete(0,100)
@@ -98,18 +99,13 @@ def btn_click1():
         te=int(tem)*60+float(tes)
     f = open('./../template.txt', 'a') # ファイルを開く(該当ファイルがなければ新規作成)
     bun1='append%s = {\'sentence\':\'%s\',\'timestamp\':[%s,%s]}'%(nm,st,'%02.2f' % ts,'%02.2f' % te)
-    f.write(bun1+'\n') # 文字列を記載する
+    f.write(bun1+'\n') # 文字列をファイルに書く
     f.close()
     entry8.insert(tk.END,bun1)
     rm=random.randrange(1, 101)
     if rm==1 or rm==11 or rm==21 or rm==31 or rm==41 or rm==51:
+        b=tkmsg.showinfo('info','ランダム生成検証')
 
-
-        b=tkmsg.showinfo('うんち！','ちんちん！')
-        '''
-        img = cv2.imread("./data/hasu.jpg")
-        cv2.imshow('ero gazou', img)
-        '''
 def btn_click2():
     entry8.delete(0,100)
     '''
@@ -162,7 +158,7 @@ frame7.pack()
 #ボタン作成
 button4 = tk.Button(frame7,text="テンプレ作成",font=("",16),width=12,bg="white",command=btn_click1)
 button4.pack(side="left")
-button7 = tk.Button(frame7,text="若宮のわがまま",font=("",16),width=12,bg="white",command=kesu)
+button7 = tk.Button(frame7,text="スタンプリセット",font=("",16),width=12,bg="white",command=kesu)
 button7.pack(side="left")
 frame8 = tk.Frame(root,pady=0)
 frame8.pack()
@@ -178,10 +174,10 @@ button9.pack(side="left")
 with open('./data/kazu.txt','r',encoding='utf-8') as f:
     kazu=f.read()
 '''
-＃文字添加
+#文字インサート
 frame9 = tk.Frame(root,pady=0)
 frame9.pack()
-button6 = tk.Button(frame9,text="最初のやつ",font=("",16),width=12,bg="white",command=btn_click3)
+button6 = tk.Button(frame9,text="序盤記述",font=("",16),width=12,bg="white",command=btn_click3)
 button6.pack(side="left")
 '''
 entry8= tk.Entry(frame9,font=("",14),justify="center",width=5)
@@ -200,7 +196,7 @@ frame11 = tk.Frame(root,pady=10)
 frame11.pack()
 frame12 = tk.Frame(root,pady=10)
 frame12.pack()
-label8 = tk.Label(frame12,font=("",14),text="v0.51")
+label8 = tk.Label(frame12,font=("",14),text="v0.53")
 label8.pack(side="left")
 
 label8 = tk.Label(frame10,font=("",14),text="出力結果")
