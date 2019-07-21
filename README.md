@@ -3,7 +3,7 @@ videocaption annotation
 概要  
 ビデオキャプションのアノテーション用にＧＵＩを構築  
 定型文挿入で効率化  
-使い方
+使い方  
 exe実行  
 or  
 python　gui.py  
